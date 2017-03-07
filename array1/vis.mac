@@ -1,0 +1,51 @@
+#
+
+# when runing in interactive mode
+#
+# Sets some default verbose
+#
+/control/verbose  2
+/run/verbose 2
+#
+# Create a scene handler for a specific graphics system
+# (Edit the next line(s) to choose another graphics system)
+#
+#/vis/open OGLIX 600x600-0+0
+#
+####/vis/open OGLSXm
+####/vis/open HepRepXML
+#
+####/vis/open DAWNFILE
+#
+# draw scene
+#
+# To draw only gammas:
+/vis/filtering/trajectories/create/particleFilter
+#/vis/filtering/trajectories/particleFilter-0/add e+
+/vis/filtering/trajectories/particleFilter-0/add gamma
+#
+#To invert the above, drawing all particles except gammas,
+# keep the above two lines but also add:
+#/vis/filtering/trajectories/particleFilter-0/invert true
+# set a magnetic field
+/vis/drawVolume
+
+#
+#gps
+#
+# /gps/particle gamma  
+# /gps/energy 511 keV 
+# #/gps/direction 0 0 1 
+# /gps/number 50200
+# /gps/ang/type iso
+
+#
+/vis/viewer/set/viewpointThetaPhi 170  40 deg
+/vis/viewer/zoom 2.5
+/vis/scene/add/axes 0 60 -30 10 mm
+# for drawing the tracks
+#/03/det/setField 0 T
+/vis/scene/add/trajectories smooth
+#/vis/scene/endOfEventAction accumulate 20
+
+#/run/beamOn 20000
